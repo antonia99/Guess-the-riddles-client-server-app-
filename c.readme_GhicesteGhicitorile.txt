@@ -1,0 +1,82 @@
+Aplicatia GhicesteGhicitorile (Taus Maria-Antonia, Timo Valeria-Georgiana)
+
+Pasii de rulare a aplicatiei:
+
+1. descarcarea programului (clasele Clientdemo, Serverdemo si clasa Ghicitoare, cu variabilele ghicitoare si raspuns)
+2. instalare jdk (compilator java) - jdk1.8.0_161 (javac.exe) (https://www.oracle.com/java/technologies/javase-jdk8-downloads.html) si jre (interpretor java) - jre1.8.0_161 (java.exe)
+3. in meniul START se cauta "Edit the system environment variables" 
+	-> Advanced -> Environment Variables... -> User variables for *pc name* -> New -> Variable name: path, Variable value: calea folderului in care se afla javac.exe
+						-> System variables -> -> New -> Variable name: path, Variable value: calea folderului in care se afla javac.exe   -> OK -> Apply
+						
+(a se urmari captura de ecran 1.Command Prompt_GhicesteGhicitorile) 
+4. deschiderea a doua instante de Command Prompt
+5. in ambele instante de Command Prompt se da comanda "cd (calea folderului unde se afla clasele mai sus mentionate, in src)"
+
+(se urmareste castigarea jocului)
+6. in Command Prompt pentru Server:
+a) se da comanda javac Serverdemo.java (pentru  compilarea Serverului)
+b) se da comanda java Serverdemo 55000 (55000 este numarul de port la care se conecteaza serverul) (pentru rularea Serverului)
+		-> pe ecran va aparea mesajul "Serverul este conectat la portul 55000"
+
+7. in Command Prompt pentru Client:
+a) se da comanda javac Clientdemo.java (pentru compilarea Clientului)
+b) se da comanda java Clientdemo localhost 55000 (conexiunea la server se face cu adresa locala a clientului si cu numarul de port al serverului)  (pentru rularea Clientului)
+		
+		-> la Server va aparea mesajul "Un nou jucator s-a conectat!" si va fi afisata ghicitoarea trimisa clientului, si raspunsul acesteia (1.Ghicitoare si 2.Raspunsul ghicitorii)
+		Pentru ghicitoarea 1:
+		-> la Client va aparea ghicitoarea trimisa de Server (3. Primit de la server) si mesajul 4.Introdu raspunsul
+		-> Clientul va oferi raspunsul considerat de el corect la ghicitoare (5. Trimis de client serverului) - raspunsul poate fi scris atat cu litere mici, cat si cu litere mari
+		
+		-> Serverul primeste raspunsul (6. Raspuns primit de la client) si totodata afiseaza si raspunsul corect al ghicitorii curente (7.Raspunsul ghicitorii)
+		-> Serverul compara raspunsul primit de la Client cu raspunsul corect al ghicitorii
+			* daca raspunsul este gresit Serverul trimite Clientului raspunsul "8.Mai incearca :("  
+			* daca raspunsul este corect va trimite raspunsul "9.Bravo!" (se repeta pasii 3 si 4 la Client, respectiv 6 si 7 la Server)
+		
+		Pentru ghicitoarea 2:
+		-> daca raspunsul este corect, serverul va incarca din memorie o noua ghicitoare si un nou raspuns (10.Ghicitoarea si 11.Raspunsul ghicitorii) si o va trimite la client
+		-> Clientul va afisa iarasi pasul 4.Introdu raspunsul, deoarece pasul 3.Primit de la server este deja facut, deoarece afiseaza raspunsul "9.Bravo!" si se va introduce mesajul OK 
+		-> se va afisa urmatoarea ghicitoare trimisa de la Server (pasii 3 si 4)
+		
+		-> cu toate ca este introdus raspunsul corect, Clientul primeste de la Server raspunsul "8.Mai incarca :("
+		-> uneori, daca este introdus un raspuns gresit, Clientul va primi de la Server raspunsul "9.Bravo!"
+		!!DE MENTIONAT: in memoria Serverului nu se va trece niciodata la ghicitoarea urmatoare pana cand nu se va primi raspunsul corect, cu toate ca afisarea la Client va fi gresita
+
+		Pentru ghicitoarea 3:
+		-> fiind raspunsul corect, Serverul va afisa urmatoarea ghicitoare, alaturi de raspunsul corect (pasii 10 si 11), lucru care va fi actualizat cu intarziere la Client
+		-> la Client va fi introdus mesajul OK si se va actualiza, afisandu-se mesajul "9.Bravo!" si apoi va fi introdus iarasi mesajul OK 
+		
+		-> cu toate ca in memoria Serverului este incarcata urmatoarea ghicitoare si raspunsul, aceasta nu apare Clientului, ci este permisa doar introducerea raspunsului corect (care poate fi luat din Server) -> incaltamintea
+		
+		-> cu toate ca este introdus raspunsul corect, Clientul primeste de la Server raspunsul "8.Mai incarca :(" 
+		Pentru ghicitoarea 4:
+		-> fiind raspunsul corect, Serverul va afisa urmatoarea ghicitoare, alaturi de raspunsul corect (pasii 10 si 11)
+		
+		-> la urmatoarea ghicitoare(nici aceasta nu va fi afisata Clientului, ci doar in Server), cu toate ca este introdus raspunsul corect, Clientul primeste de la Server raspunsul "8.Mai incarca :(" 
+		Pentru ghicitoarea 5:
+		-> fiind raspunsul corect, Serverul va afisa urmatoarea ghicitoare, alaturi de raspunsul corect (pasii 10 si 11)
+		
+		-> atunci cand se ajunge la ultima ghicitoare si este introdus raspunsul corect "drumul" si apoi "OK"
+			* conexiunea cu serverul se incheie
+			* Clientului i se va afisa mesajul "Ai castigat!"
+			* se va incheia si conexiunea Clientului
+
+
+
+(a se urmari captura de ecran 2.Command Prompt_GhicesteGhicitorile)
+c) la o noua rulare a Clientului si a Serverului se va urmari situatia in care jucatorul doreste sa renunte 	
+		-> jucatorul va introduce mesajul "pa"
+		-> Clientul va primi de la Server mesajul "Ai pierdut!" si conexiunea Clientului va fi incheiata
+		
+
+		
+Versiuni software utilizate:
+- la realizarea aplicatiei am utilizat programul Eclipse IDE for Java Developers 2020-03
+	* am creat proiectul GhicesteGhicitorile 
+		-> clasa Serverdemo 
+		-> clasa Clientdemo
+		-> clasa Ghicitoare
+- pentru compilarea si rularea aplicatiei am utilizat 
+		-> compilatorul jdk1.8.0_161 (javac.exe)
+		-> interpretorul jre1.8.0_161 (java.exe)
+		-> aplicatia Command Prompt
+												

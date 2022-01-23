@@ -1,0 +1,37 @@
+APLICATIA GHICESTE GHICITORILE (Taus Maria-Antonia, Timo Valeria-Georgiana):
+
+b) documentatie: https://www.codejava.net/java-se/networking/java-socket-server-examples-tcp-ip
+
+b1) enunt problema (strategia de joc, numar jucatori, cum castig ....):
+
+Scopul jocului este sa ghicesti toate ghicitorile, pana nu vei da rapunsul corect nu vei putea trece la urmatoarea ghicitoare.
+Se joaca impreuna cu serverul, el este cel care transmite ghicitoarea si iti spune daca ai raspuns corect sau nu.
+Pentru a castiga trebuie sa raspunzi corect la toate ghicitorile.
+
+b2) scurta descriere pentru proiect - cum am implementat? ce structuri de date am folosit? unde a intervenit comunicarea in retea? :
+
+- Ca si metoda de implementare am folosit TCP/IP si am importat pachetul java.net.*.
+- Ca si structuri de date folosite sunt prezente: class, try-catch, do-while.
+- Comunicarea in retea a intervenit intre server si client: 
+	-creearea conexiunii intre server si client se realizeaza cu un ServerSocket prezent in clasa Server,care contine portul si un Socket in clasa Client, care contine numele host-ului si portul server-ului.
+	-atunci cand conexiunea cu un Client este creata se creeaza si un obiect de tip Socket
+	-Server-ul primeste informatia de la Client prin intermediul unui obiect de tip InputStream, si o trimite prin intermediul unui obiect de tip OutputStream
+	-Clientul primeste informatia de la Server printr-un obiect de tip InputStream si o trimite printr-un obiect de tip OutputStream
+	-Citirea datelor ca si String-uri este facuta cu un obiect de tip BufferReader
+	-Trimiterea datelor ca si String-uri este facuta cu un obiect de tip PrintWriter
+
+
+b3)  un tabel cu 2-3 structuri de limbaj (python/java) explicate (ex. utilizarea arrayurilor sau functiile socket utilizate/apelate, conversii de tipuri de date):
+
+- List<>/ArrayList<> --> Creeaza o lista de tipul clasei Ghicitoare, care contine enuntul si raspunsul ghicitorilor
+- toLowerCase() --> Converteste textul introdus in litere mici de tipar, indiferent ca acesta a fost scris integral sau partial cu litere mari de tipar
+- System.out.println() --> Afiseaza pe ecran textul
+- printStackTrace() --> Afiseaza calea erorii, atunci cand ea apare
+- ParseInt() --> Converteste informatia intr-un numar de tip intreg
+- ServerSocket --> Este o clasa care implementeaza socket-urile de tip server
+- Socket --> Este o clasa care implementeaza socket-urile de tip client
+- InputStream --> Este o clasa abstracta care permite primirea unui mesaj de tip byte --> getInputStream: este o metoda a clasei care preia datele din conexiune
+- BufferReader --> Citeste mesajele dintr-un InputStream si le converteste sub forma de text
+- OutputStream --> Este o clasa abstracta care permite transmiterea unui mesaj de tip byte in cadrul unei conexiuni --> getOutputStream: este o metoda a clasei care preia datele ce vor fi transmise din conexiune
+- PrintWriter --> Printeaza obiectele de tip OutputStream convertite in tipu text 
+- equals() --> Este o functie care compara doua String-uri 
